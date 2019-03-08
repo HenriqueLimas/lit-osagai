@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <title>lit-osagai Todo list</title>
+
+    <style>
+      * {
+        box-sizing: border-box;
+      }
+
+      html,
+      body {
+        width: 100%;
+        height: 100%;
+      }
+    </style>
+  </head>
+  <body>
+    <todo-list></todo-list>
+
+    <script type="module">
+      import {
+        define,
+        html,
+        update,
+        attachShadow
+      } from "../dist/lit-osagai.mjs";
+
+      function HelloWorld({ element }) {
+        attachShadow(element);
+
+        const initialState = { state: "loaded", items: [] };
+        const handleClick = () => {
+          update(element, (currentState = initialState) => {
+            currentState.items.push({
+              name: "Yaya"
+            });
+
+            return currentState;
+          });
+        };
+
+        return ({ state, items } = initialState) => html`
+          <style>
+            :host {
+              border: 1px solid red;
+              display: block;
+            }
+          </style>
+          <button class="btn" @click=${handleClick}>Click me</button>
+          ${state === "loading" ? "Loading..." : ""}
+          ${state === "loaded"
+            ? html`
+                <ul class="list">
+                  ${items.map(
+                    item =>
+                      html`
+                        <li>${item.name}</li>
+                      `
+                  )}
+                </ul>
+              `
+            : ""}
+        `;
+      }
+
+      define("todo-list", HelloWorld);
+    </script>
+  </body>
+</html>

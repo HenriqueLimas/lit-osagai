@@ -1,0 +1,29 @@
+{
+  "name": "lit-osagai",
+  "version": "0.0.0",
+  "description": "osagai with lit-html",
+  "repository": "github:HenriqueLimas/lit-osagai",
+  "homepage": "https://github.com/HenriqueLimas/lit-osagai",
+  "main": "dist/lit-osagai.js",
+  "umd:main": "dist/lit-osagai.umd.js",
+  "module": "dist/lit-osagai.mjs",
+  "source": "src/index.js",
+  "scripts": {
+    "start": "microbundle watch",
+    "prettier": "prettier {{__tests__,src}/**/*.{js},README.md}",
+    "format": "npm run prettier -- --write",
+    "build": "microbundle build --target=browser --external=none",
+    "release": "npm run build && git commit -am $npm_package_version && git tag $npm_package_version && git push && git push --tags && npm publish"
+  },
+  "keywords": ["osagai", "lit-html", "webcomponents"],
+  "author": "Henrique Limas <henrique.ramos.limas@gmail.com>",
+  "license": "ISC",
+  "devDependencies": {
+    "microbundle": "^0.11.0",
+    "prettier": "^1.16.4"
+  },
+  "dependencies": {
+    "lit-html": "^1.0.0",
+    "osagai": "^0.3.2"
+  }
+}
