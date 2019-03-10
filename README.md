@@ -13,7 +13,7 @@ npm install lit-osagai
 Or import from unpkg
 
 ```js
-import { define, html } from "https://unpkg.com/lit-osagai/osagai.mjs";
+import { define, html } from "https://unpkg.com/lit-osagai/dist/lit-osagai.mjs";
 ```
 
 ## Usage
